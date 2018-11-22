@@ -2,8 +2,8 @@ import java.util.List;
 
 public class Series extends Media {
 
-    protected int seasons;
-    protected int episodesPerSeason;
+    protected int yearTo;
+    protected int[] seasonEpisodes;
 
     /**
      * Currently only implements same number of episodes per season!
@@ -11,15 +11,13 @@ public class Series extends Media {
      * @param categories categories of media
      * @param year year of release
      * @param rating rating on IMDB
-     * @param seasons seasons of this series
-     * @param episodesPerSeason number of episodes for every season
      */
-    public Series(String name, List<String> categories, int year, float rating, int seasons, int episodesPerSeason){
+    public Series(String name, List<String> categories, int year, int yearTo, float rating, int[] seasonEpisodes){
         this.name = name;
         this.categories = categories;
         this.year = year;
         this.rating = rating;
-        this.seasons = seasons;
-        this.episodesPerSeason = episodesPerSeason;
+        this.yearTo = yearTo;
+        this.seasonEpisodes = seasonEpisodes;
     }
 }
