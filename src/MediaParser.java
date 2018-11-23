@@ -33,14 +33,17 @@ public class MediaParser {
      *
      * @return an arrayList of all the series parsed
      */
-    public List<Series> GetSeries(){
-        return null;
+    public List<Series> GetSeries() throws IOException{
+        BufferedReader br = new BufferedReader(new FileReader(seriesFileName));
+        List<Series> series = readSeries(br);
+        br.close();
+        return series;
     }
 
     /**
      *
      * @param br BufferedReader which has the filename to already read from
-     * @return a List with movie objects
+     * @return a List with movies from the file
      */
     private List<Movie> readMovies(BufferedReader br){
         List<Movie> movies = new ArrayList<>();
@@ -55,23 +58,12 @@ public class MediaParser {
                 //Each line is name;year;category1;category2;...;rating;
                 String name = info[0].trim();
 
-                //Try parsing before applying the value
-                int year = 0;
-                if (tryParseInt(info[1].trim()))
-                     year = Integer.parseInt(info[1].trim());
+                int year = getParsedInt(info[1]);
 
-                //Split with ,
-                String[] categoriesStrings = info[2].split(",");
-                //Convert to ArrayList
-                ArrayList<String> categoryList = new ArrayList<>( Arrays.asList(categoriesStrings));
+                //Get the categories from a custom string
+                ArrayList<String> categoryList = getCategories(info[2]);
 
-                //Translate from commas to dots
-                info[3] = info[3].replaceAll(",",".");
-
-                //Try parsing before applying the value
-                float rating = 0;
-                if (tryParseFloat(info[3].trim()))
-                    rating = Float.parseFloat(info[3].trim());
+                float rating = getParsedFloat(info[3]);
 
                 //Create new Movie object and apply to list
                 movies.add(new Movie(name, categoryList, year, rating));
@@ -80,6 +72,70 @@ public class MediaParser {
             return null;
         }
         return movies;
+    }
+
+    /**
+     *
+     * @param br BufferedRead which has the filename to read from
+     * @return A list with series from the file
+     */
+    private List<Series> readSeries(BufferedReader br){
+        List<Series> series = new ArrayList<>();
+        try{
+            String line = br.readLine();
+            while (br.ready() && line != null){
+                line = br.readLine();
+
+                String[] info = line.split(";");
+
+                String name = info[0].trim();
+
+                String[] years = info[1].split("-");
+                int yearFrom = getParsedInt(years[0]);
+                int yearTo = 0;
+                if (years.length > 1)yearTo = getParsedInt(years[1]);
+
+                ArrayList<String> categoryList = getCategories(info[2]);
+
+                float rating = getParsedFloat(info[3]);
+
+                ArrayList<Integer> seasons = new ArrayList<Integer>();
+                for (int restStrings = 4; restStrings < info.length; restStrings++) {
+                    String[] splitNumbers = info[restStrings].split(",\\-");
+                    for (int numbers = 0; numbers < splitNumbers.length/2; numbers++) {
+                        seasons.add(getParsedInt(splitNumbers[++numbers]));
+                    }
+                }
+
+                series.add(new Series(name,categoryList,yearFrom,yearTo,rating,convertIntegers(seasons)));
+            }
+        } catch (IOException e){
+            return null;
+        }
+        return series;
+    }
+
+    private ArrayList<String> getCategories(String unSplitString){
+        //Split with ,
+        String[] categoriesStrings = unSplitString.split(",");
+        //Convert to ArrayList
+        ArrayList<String> categoryList = new ArrayList<>( Arrays.asList(categoriesStrings));
+        return categoryList;
+    }
+
+    private int getParsedInt(String value){
+        int parsedInt = 0;
+        if (tryParseInt(value.trim()))
+            parsedInt = Integer.parseInt(value.trim());
+        return parsedInt;
+    }
+
+    private float getParsedFloat(String value){
+        value = value.replaceAll(",",".");
+        float parsedFloat = 0;
+        if (tryParseFloat(value.trim()))
+            parsedFloat = Float.parseFloat(value.trim());
+        return parsedFloat;
     }
 
     private boolean tryParseInt(String value){
@@ -98,5 +154,14 @@ public class MediaParser {
         } catch (NumberFormatException e){
             return false;
         }
+    }
+
+    public static int[] convertIntegers(List<Integer> integers){
+        int[] returnValue = new int[integers.size()];
+        Iterator<Integer> iterator = integers.iterator();
+        for (int i = 0; i < returnValue.length; i++) {
+            returnValue[i] = iterator.next();
+        }
+        return returnValue;
     }
 }

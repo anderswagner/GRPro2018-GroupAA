@@ -19,12 +19,14 @@ public class MediaData{
             series = mediaParser.GetSeries();
         } catch (IOException e){
             System.out.println(e.getMessage() + " couldn't parse objects");
-        } finally {
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally{
             for(Media specificMovie : movies){
                 allMedia.put(specificMovie.getName(),specificMovie);
             }
-            for(Media specificSeries : series){
-                allMedia.put(specificSeries.getName(),specificSeries);
+            for(Media specificSeries : series) {
+                allMedia.put(specificSeries.getName(), specificSeries);
             }
         }
     }
