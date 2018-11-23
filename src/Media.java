@@ -4,7 +4,7 @@ public abstract class Media{
     protected List<String> categories;
     protected int year;
     protected float rating;
-
+    
     /**
      *
      * @return the name of the media

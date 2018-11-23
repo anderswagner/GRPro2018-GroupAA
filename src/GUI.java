@@ -37,17 +37,17 @@ public class GUI
         frame.setVisible(true);
     }
     public void drawPanels(){
-        top = makePanel();
-        mid = makePanel();
-        bot = makePanel();
+        top = makePanel(1,7, "Bruger navn");
+        mid = makePanel(2,7, "Film");
+        bot = makePanel(2,7, "Serier");
         top.setBackground(Color.RED);
         mid.setBackground(Color.BLUE);
         bot.setBackground(Color.RED);
     }
-    private JPanel makePanel(){
-        JPanel x = new JPanel();
-        int width = contentPane.getWidth();
-        int height = contentPane.getHeight()/3 ;
+    private JPanel makePanel(int y, int t, String mediaType){
+        JPanel x = new MultiMediaPanel("" + mediaType);
+        int width = contentPane.getWidth()/2;
+        int height = contentPane.getHeight() * y/t ;
         x.setPreferredSize(new Dimension(width,height));
         System.out.println(width + "  " + height);
         return x;
