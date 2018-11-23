@@ -27,7 +27,7 @@ public class Movie extends Media {
             res.append(category);
             res.append(", ");
         }
-        res.append(", Rating: ");
+        res.append("Rating: ");
         res.append(rating);
         return "" + res;
     }
