@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class MediaData{
     private List<Movie> movies;
@@ -31,4 +32,35 @@ public class MediaData{
     public String GetImageString(String mediaName){
         return allMedia.get(mediaName).getImageFilename();
     }
+    public ArrayList<ArrayList<Media>> search(String searchString){
+        ArrayList<ArrayList<Media>>  mediasWithString = new ArrayList<ArrayList<Media>>();
+        mediasWithString.add(new ArrayList<Media>());
+        mediasWithString.add(new ArrayList<Media>());
+        for(Media specificMovie : movies){
+            boolean foundMovie = false;
+            for (String category: specificMovie.getCategories()){
+                if(category.contains(searchString)){
+                    foundMovie = true;
+                }
+            }
+            if(specificMovie.getName().contains(searchString)){
+                foundMovie = true;
+            }
+            if (foundMovie=true){mediasWithString.get(0).add(specificMovie);}
+        }
+        for(Media specificSeries : series){
+            boolean foundMovie = false;
+            for (String category: specificSeries.getCategories()){
+                if(category.contains(searchString)){
+                    foundMovie = true;
+                }
+            }
+            if(specificSeries.getName().contains(searchString)){
+                foundMovie = true;
+            }
+            if (foundMovie=true){mediasWithString.get(1).add(specificSeries);}
+        }
+            return mediasWithString;
+    }
+    
 }
