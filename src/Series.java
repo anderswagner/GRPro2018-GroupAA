@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.List;
 
 public class Series extends Media {
@@ -19,5 +20,57 @@ public class Series extends Media {
         this.rating = rating;
         this.yearTo = yearTo;
         this.seasonEpisodes = seasonEpisodes;
+    }
+
+    public int getYearTo(){
+        return yearTo;
+    }
+
+    public int getRunningYears(){
+        if (yearTo != 0)
+            return yearTo-year;
+        else
+            return Calendar.getInstance().get(Calendar.YEAR) - year;
+    }
+
+    public int getSeasons(){
+        return seasonEpisodes.length;
+    }
+
+    public int getTotalEpisodes(){
+        int sum = 0;
+        for (int i: seasonEpisodes) {
+            sum+=i;
+        }
+        return sum;
+    }
+
+    public int getEpisodesInSeason(int season){
+        try{
+            return seasonEpisodes[season];
+        } catch (IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+        res.append("Name: ");
+        res.append(name);
+        res.append(", Years running: ");
+        res.append(year);
+        res.append("-");
+        if (yearTo != 0)
+            res.append(yearTo);
+
+        res.append(", Categories: ");
+        for(String category : categories){
+            res.append(category);
+            res.append(", ");
+        }
+        res.append("Rating: ");
+        res.append(rating);
+        return "" + res;
     }
 }
