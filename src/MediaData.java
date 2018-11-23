@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ public class MediaData{
     private List<Movie> movies;
     private List<Series> series;
     private Map<String,Media> allMedia;
+    private List<User> users;
 
     private MediaParser mediaParser;
 
@@ -29,40 +31,35 @@ public class MediaData{
                 allMedia.put(specificSeries.getName(), specificSeries);
             }
         }
+        users = new ArrayList<User>();
     }
 
     public String GetImageString(String mediaName){
         return allMedia.get(mediaName).getImageFilename();
     }
+
     public ArrayList<ArrayList<Media>> search(String searchString){
         ArrayList<ArrayList<Media>>  mediasWithString = new ArrayList<ArrayList<Media>>();
-        mediasWithString.add(new ArrayList<Media>());
-        mediasWithString.add(new ArrayList<Media>());
-        for(Media specificMovie : movies){
-            boolean foundMovie = false;
-            for (String category: specificMovie.getCategories()){
-                if(category.contains(searchString)){
-                    foundMovie = true;
-                }
-            }
-            if(specificMovie.getName().contains(searchString)){
-                foundMovie = true;
-            }
-            if (foundMovie=true){mediasWithString.get(0).add(specificMovie);}
-        }
-        for(Media specificSeries : series){
-            boolean foundMovie = false;
-            for (String category: specificSeries.getCategories()){
-                if(category.contains(searchString)){
-                    foundMovie = true;
-                }
-            }
-            if(specificSeries.getName().contains(searchString)){
-                foundMovie = true;
-            }
-            if (foundMovie=true){mediasWithString.get(1).add(specificSeries);}
-        }
-            return mediasWithString;
+        mediasWithString.add(searchMediaType(movies, searchString));
+        mediasWithString.add(searchMediaType(series, searchString));
+        return mediasWithString;
     }
-    
+
+    private <M extends Media> ArrayList<Media> searchMediaType(List<M> toSearchThrough, String searchString){
+        ArrayList<Media> SearchedMedia = new ArrayList<>();
+        for(M specificMedia : toSearchThrough){
+            boolean foundMedia = false;
+            for (String category: specificMedia.getCategories()){
+                if(category.contains(searchString)){
+                    foundMedia = true;
+                }
+            }
+            if(specificMedia.getName().contains(searchString)){
+                foundMedia = true;
+            }
+            if (foundMedia) {
+                SearchedMedia.add(specificMedia);}
+        }
+        return SearchedMedia;
+    }
 }

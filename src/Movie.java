@@ -18,7 +18,7 @@ public class Movie extends Media {
 
     public String toString(){
         StringBuilder res = new StringBuilder();
-        res.append("Name: ");
+        res.append("Title: ");
         res.append(name);
         res.append(", Year: ");
         res.append(year);
