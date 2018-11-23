@@ -93,7 +93,8 @@ public class MediaParser {
                 String[] years = info[1].split("-");
                 int yearFrom = getParsedInt(years[0]);
                 int yearTo = 0;
-                if (years.length > 1)yearTo = getParsedInt(years[1]);
+                if (years.length > 1)
+                    yearTo = getParsedInt(years[1]);
 
                 ArrayList<String> categoryList = getCategories(info[2]);
 
@@ -101,7 +102,7 @@ public class MediaParser {
 
                 ArrayList<Integer> seasons = new ArrayList<Integer>();
                 for (int restStrings = 4; restStrings < info.length; restStrings++) {
-                    String[] splitNumbers = info[restStrings].split(",\\-");
+                    String[] splitNumbers = info[restStrings].split("[,-]");
                     for (int numbers = 0; numbers < splitNumbers.length/2; numbers++) {
                         seasons.add(getParsedInt(splitNumbers[++numbers]));
                     }

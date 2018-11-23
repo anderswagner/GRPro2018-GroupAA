@@ -29,6 +29,7 @@ public class MediaData{
                 allMedia.put(specificSeries.getName(), specificSeries);
             }
         }
+        System.out.println(series.get(4));
     }
 
     public String GetImageString(String mediaName){

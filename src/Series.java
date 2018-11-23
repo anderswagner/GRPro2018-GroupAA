@@ -56,7 +56,7 @@ public class Series extends Media {
 
     public String toString(){
         StringBuilder res = new StringBuilder();
-        res.append("Name: ");
+        res.append("Title: ");
         res.append(name);
         res.append(", Years running: ");
         res.append(year);
@@ -71,6 +71,19 @@ public class Series extends Media {
         }
         res.append("Rating: ");
         res.append(rating);
+        //Sæsoner her!!
+        res.append(", Seasons: ");
+        res.append(seasonEpisodes.length);
+        res.append(", Total Episodes: ");
+        res.append(getTotalEpisodes());
+        res.append(", Episodes in seasons: ");
+        for (int i = 0; i < seasonEpisodes.length; i++) {
+            res.append(i);
+            res.append(": ");
+            res.append(seasonEpisodes[i]);
+            if (i != seasonEpisodes.length)
+                res.append(", ");
+        }
         return "" + res;
     }
 }

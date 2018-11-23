@@ -73,7 +73,7 @@ Midnight Cowboy; 1969; Drama; 7,9;
 Mr Smith Goes To Washington; 1939; Comedy, Drama; 8,2;
 Rain Man; 1988; Drama; 8,0;
 Annie Hall; 1977; Comedy, Romance; 8,0;
-Fargo; 1996; Crime, Drama, Thriller; 8,1;
+Fargo(Movie); 1996; Crime, Drama, Thriller; 8,1;
 Giant; 1956; Drama, Western; 7,7;
 Shane; 1953; Drama, Western; 7,7;
 Grapes Of Wrath; 1940; Drama, History; 8,1;

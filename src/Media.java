@@ -55,6 +55,10 @@ public abstract class Media{
      * @return file URL to the image poster of the media
      */
     public String getImageFilename(){
-        throw new UnsupportedOperationException("Not implemented yet");
+        StringBuilder res = new StringBuilder();
+        res.append("ExternalData/Billeder/");
+        res.append(name);
+        res.append(".jpg");
+        return res.toString();
     }
 }
