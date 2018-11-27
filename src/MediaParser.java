@@ -119,6 +119,10 @@ public class MediaParser {
     private ArrayList<String> getCategories(String unSplitString){
         //Split with ,
         String[] categoriesStrings = unSplitString.split(",");
+
+        for (int i = 0; i < categoriesStrings.length; i++) {
+            categoriesStrings[i] = categoriesStrings[i].toLowerCase();
+        }
         //Convert to ArrayList
         ArrayList<String> categoryList = new ArrayList<>( Arrays.asList(categoriesStrings));
         return categoryList;
