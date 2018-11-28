@@ -19,7 +19,7 @@ public class GUI
         contentPane = frame.getContentPane();
         frame.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
-                //Dette sker hver gang vinduet blivder resized.
+                //Dette sker hver gang vinduet bliver resized.
                 contentPane.removeAll();
                 drawPanels();
                 contentPane.add(header);
