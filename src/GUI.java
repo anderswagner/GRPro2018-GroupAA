@@ -5,6 +5,7 @@ public class GUI
 {
     JFrame frame;
     Container contentPane;
+    JPanel header;
     JPanel top;
     JPanel mid;
     JPanel bot;
@@ -21,6 +22,7 @@ public class GUI
                 //Dette sker hver gang vinduet blivder resized.
                 contentPane.removeAll();
                 drawPanels();
+                contentPane.add(header);
                 contentPane.add(top);
                 contentPane.add(mid);
                 contentPane.add(bot);
@@ -37,19 +39,19 @@ public class GUI
         frame.setVisible(true);
     }
     public void drawPanels(){
-        top = makePanel(1,7, "Bruger navn");
-        mid = makePanel(2,7, "Film");
-        bot = makePanel(2,7, "Serier");
+        header = makePanel(1,6, "Logo");
+        top = makePanel(1,6, "Bruger navn");
+        mid = makePanel(2,6, "Film");
+        bot = makePanel(2,6, "Serier");
         top.setBackground(Color.RED);
         mid.setBackground(Color.BLUE);
         bot.setBackground(Color.RED);
     }
     private JPanel makePanel(int y, int t, String mediaType){
         JPanel x = new MultiMediaPanel("" + mediaType);
-        int width = contentPane.getWidth()/2;
+        int width = contentPane.getWidth();
         int height = contentPane.getHeight() * y/t ;
         x.setPreferredSize(new Dimension(width,height));
-        System.out.println(width + "  " + height);
         return x;
     }
 }

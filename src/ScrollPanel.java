@@ -13,5 +13,14 @@ public class ScrollPanel extends JPanel
         this.add(new MediaPanel());
         this.add(new MediaPanel());
         this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
+        this.add(new MediaPanel());
     }
 }
