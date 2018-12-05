@@ -56,7 +56,7 @@ public class LogInScreen {
     }
     public void enterButtonPressed(ActionEvent e){
         new GUI();//åbner nyt gui vindue
-        frame.setVisible(false);//lukker vinduet 
+        frame.dispose();//lukker vinduet 
     }
     
 }
