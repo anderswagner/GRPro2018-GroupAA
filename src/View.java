@@ -1,6 +1,6 @@
 public class View{
-    private GUI gui;
+    private LogInScreen logInScreen;
     public View(){
-        gui = new GUI();
+        logInScreen= new LogInScreen();
     }
 }
