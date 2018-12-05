@@ -55,7 +55,8 @@ public class LogInScreen {
         frame.setVisible(true);
     }
     public void enterButtonPressed(ActionEvent e){
-        new GUI();
+        new GUI();//åbner nyt gui vindue
+        frame.setVisible(false);//lukker vinduet 
     }
     
 }
