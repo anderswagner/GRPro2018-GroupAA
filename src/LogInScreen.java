@@ -9,6 +9,7 @@ public class LogInScreen {
     private JButton enterButton;//
     public LogInScreen(){
         makeFrame();
+        
     }
     private void makeFrame(){
         // Frame delen
@@ -18,6 +19,7 @@ public class LogInScreen {
         frame.setLocation(400,400);//sætter start location af frame
         frame.setLayout(null);//vælger typen af Layout
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//gør at programmet lukker ned hvis der trykkes på default close
+        
         
         // Username delen
         logInLabel = new JLabel("Enter username");//Print string ved siden af box
@@ -51,17 +53,18 @@ public class LogInScreen {
         enterButton.setLocation(300,150);
         enterButton.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
+        
         //Opret brugerknap
         enterButton=new JButton("Opret ny bruger");//JButton tilføjer knap med string
         enterButton.setSize(enterButton.preferredSize());
         enterButton.setLocation(120,150);
-        //enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
+        enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
         frame.setVisible(true);
     }
-    public void enterButtonPressed(ActionEvent e){
-        new View();//åbner nyt gui vindue
-        frame.dispose();//lukker vinduet 
+    private void enterButtonPressed(ActionEvent e){
+        new View();
+        frame.dispose();
     }
     
 }
