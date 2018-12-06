@@ -6,11 +6,14 @@ public class OpretBruger {
     private JTextField userNameField; //til brugernavn
     private JPasswordField passwordField;
     private JLabel logInLabel; //til at printe på frame
-    private JButton enterButton;//
+    private JButton opretBruger;//
+    private JCheckBox adminCheckBox;
     public OpretBruger(){
         makeFrame();
+        //User user=new User();
     }
     private void makeFrame(){
+        
         // Frame delen
         frame =new JFrame("Log in screen");
         frame.setSize(500,250);//sætter start størrelsen
@@ -47,17 +50,28 @@ public class OpretBruger {
         frame.add(passwordField);
         
         //Enter knap
-        enterButton=new JButton("Opret Bruger");//JButton tilføjer knap med string
-        enterButton.setSize(enterButton.preferredSize());
-        enterButton.setLocation(200,150);
-        enterButton.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
-        frame.add(enterButton);
+        opretBruger=new JButton("Opret Bruger");//JButton tilføjer knap med string
+        opretBruger.setSize(opretBruger.preferredSize());
+        opretBruger.setLocation(150,150);
+        opretBruger.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
+        frame.add(opretBruger);
+        
+        //admin chechbox
+        adminCheckBox=new JCheckBox("Er du admin?");//JButton tilføjer knap med string
+        adminCheckBox.setSize(opretBruger.preferredSize());
+        adminCheckBox.setLocation(300,150);
+        frame.add(adminCheckBox);
+        
         
         frame.setVisible(true);
     }
     private void enterButtonPressed(ActionEvent e){
+        if(adminCheckBox.isSelected()){}
+        //user.setUserName(userNameField.getText());
+        //user.setPassword(passwordField.getText());
         new LogInScreen();
         frame.dispose();
     }
+    
     
 }
