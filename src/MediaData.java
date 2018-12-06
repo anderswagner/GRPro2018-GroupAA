@@ -35,14 +35,12 @@ public class MediaData{
         users = new HashMap();
     }
 
-    public List<Media> getMovies(){
-        ArrayList<Media> movieList = (ArrayList<Media>) (List<? extends Media>) movies;
-        return movieList;
+    public List<Movie> getMovies(){
+        return movies;
     }
 
-    public List<Media> getSeries(){
-        ArrayList<Media> seriesList = (ArrayList<Media>) (List<? extends Media>) series;
-        return seriesList;
+    public List<Series> getSeries(){
+        return series;
     }
 
     public String GetImageString(String mediaName){
