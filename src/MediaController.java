@@ -5,4 +5,12 @@ public class MediaController{
         view = new View();
         mediaData = new MediaData();
     }
+
+    public MediaData getData(){
+        return mediaData;
+    }
+
+    public View getView(){
+        return view;
+    }
 }
