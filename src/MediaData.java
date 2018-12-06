@@ -62,4 +62,11 @@ public class MediaData{
         }
         return SearchedMedia;
     }
+
+    private void CreateNewUser(String username, String password, Boolean admin){
+        for (User user: users) {
+            //if (user.userName.equals(username))
+
+        }
+    }
 }
