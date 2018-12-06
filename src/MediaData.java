@@ -9,7 +9,8 @@ public class MediaData{
     private List<Movie> movies;
     private List<Series> series;
     private Map<String,Media> allMedia;
-    private List<User> users;
+    private Map<String,User> users;
+    private User currentUser;
 
     private MediaParser mediaParser;
 
@@ -31,7 +32,7 @@ public class MediaData{
                 allMedia.put(specificSeries.getName(), specificSeries);
             }
         }
-        users = new ArrayList<User>();
+        users = new HashMap();
     }
 
     public String GetImageString(String mediaName){
@@ -63,10 +64,30 @@ public class MediaData{
         return SearchedMedia;
     }
 
-    private void CreateNewUser(String username, String password, Boolean admin){
-        for (User user: users) {
-            //if (user.userName.equals(username))
+    public void CreateNewUser(String username, String password, Boolean admin){
+        if (users.containsKey(username))
+            throw new IllegalArgumentException("Username already exists " + username);
+        users.put(username, new User(username, password, admin));
+        currentUser = users.get(username);
+    }
 
-        }
+    public String TryLogin(String username, String password){
+        if (users.containsKey(username)) {
+            boolean loggedIn = users.get(username).checkPassword(password);
+            if (loggedIn)
+                currentUser = users.get(username);
+            return username;
+        } else
+            throw new IllegalArgumentException("Username doesn't exist " + username);
+    }
+
+    public void addToUserList(Media media){
+        if (currentUser != null)
+            currentUser.addToMyList(media);
+    }
+
+    public void removeFromUserList(Media media){
+        if (currentUser != null)
+            currentUser.removeFromMyList(media);
     }
 }
