@@ -48,10 +48,15 @@ public class LogInScreen {
         //Enter knap
         enterButton=new JButton("Enter");//JButton tilføjer knap med string
         enterButton.setSize(enterButton.preferredSize());
-        enterButton.setLocation(200,150);
+        enterButton.setLocation(300,150);
         enterButton.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
-        
+        //Opret brugerknap
+        enterButton=new JButton("Opret ny bruger");//JButton tilføjer knap med string
+        enterButton.setSize(enterButton.preferredSize());
+        enterButton.setLocation(120,150);
+        enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
+        frame.add(enterButton);
         frame.setVisible(true);
     }
     public void enterButtonPressed(ActionEvent e){
