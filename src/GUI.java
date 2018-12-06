@@ -9,6 +9,7 @@ public class GUI
     JPanel top;
     JPanel mid;
     JPanel bot;
+    JPanel andet;
     public GUI(){
         start();
         contentPane.setBackground(Color.BLACK);
@@ -26,6 +27,8 @@ public class GUI
                 contentPane.add(top);
                 contentPane.add(mid);
                 contentPane.add(bot);
+                contentPane.add(andet);
+                
                 contentPane.revalidate();
             }
         });
@@ -39,13 +42,15 @@ public class GUI
         frame.setVisible(true);
     }
     public void drawPanels(){
-        header = makePanel(1,6, "Logo");
-        top = makePanel(1,6, "Bruger navn");
-        mid = makePanel(2,6, "Film");
-        bot = makePanel(2,6, "Serier");
-        top.setBackground(Color.RED);
+        header = makePanel(1,7, "Logo");
+        top = makePanel(1,7, "Bruger navn");
+        mid = makePanel(2,7, "Film");
+        bot = makePanel(2,7, "Serier");
+        andet = makePanel(2,7, "Andet");
+        /*top.setBackground(Color.RED);
         mid.setBackground(Color.BLUE);
-        bot.setBackground(Color.RED);
+        bot.setBackground(Color.RED);*/
+        
     }
     private JPanel makePanel(int y, int t, String mediaType){
         JPanel x = new MultiMediaPanel("" + mediaType);
