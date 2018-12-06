@@ -8,6 +8,7 @@ public class MultiMediaPanel extends JPanel
     public MultiMediaPanel(String mediaType){
         MediaCategory = new JLabel("" + mediaType);
         scrollPane =  new JScrollPane(new ScrollPanel());
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(30);
         this.setLayout(new BorderLayout()); 
         this.add(MediaCategory,BorderLayout.PAGE_START);
         this.setPreferredSize(new Dimension(600,400));
