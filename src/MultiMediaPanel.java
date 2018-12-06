@@ -10,7 +10,7 @@ public class MultiMediaPanel extends JPanel
         scrollPane =  new JScrollPane(new ScrollPanel());
         this.setLayout(new BorderLayout()); 
         this.add(MediaCategory,BorderLayout.PAGE_START);
-        
+        this.setPreferredSize(new Dimension(600,400));
         //scrollPane.setViewportView(new ScrollPanel());
         
         this.add(scrollPane,BorderLayout.CENTER);

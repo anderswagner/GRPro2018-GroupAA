@@ -55,12 +55,12 @@ public class LogInScreen {
         enterButton=new JButton("Opret ny bruger");//JButton tilføjer knap med string
         enterButton.setSize(enterButton.preferredSize());
         enterButton.setLocation(120,150);
-        enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
+        //enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
         frame.setVisible(true);
     }
     public void enterButtonPressed(ActionEvent e){
-        new GUI();//åbner nyt gui vindue
+        new View();//åbner nyt gui vindue
         frame.dispose();//lukker vinduet 
     }
     
