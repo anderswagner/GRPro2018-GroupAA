@@ -121,7 +121,7 @@ public class MediaParser {
         String[] categoriesStrings = unSplitString.split(",");
 
         for (int i = 0; i < categoriesStrings.length; i++) {
-            categoriesStrings[i] = categoriesStrings[i].toLowerCase();
+            categoriesStrings[i] = categoriesStrings[i].toLowerCase().trim();
         }
         //Convert to ArrayList
         ArrayList<String> categoryList = new ArrayList<>( Arrays.asList(categoriesStrings));
