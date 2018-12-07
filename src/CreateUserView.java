@@ -73,7 +73,8 @@ public class CreateUserView {
     }
 
     private void createdUser(boolean success){
-        if (success)
+        if (success) {
             System.out.println("Created a user");
+        }
     }
 }

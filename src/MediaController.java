@@ -28,7 +28,13 @@ public class MediaController{
     }
 
     public View getView(){
-        return view;
+        if (view != null)
+            return view;
+        else{
+            view = new View();
+            return getView();
+        }
+
     }
 
     public boolean CreateUser(String username, String password, boolean admin){
