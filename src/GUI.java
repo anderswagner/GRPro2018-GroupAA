@@ -3,9 +3,10 @@ import java.awt.event.*;
 import javax.swing.*;
 public class GUI extends JPanel
 {
-    public GUI(){
-        this.add(new MultiMediaPanel("film"));
-        this.add(new MultiMediaPanel("film"));
+    public GUI(String s){
+        this.add(new MultiMediaPanel("Movies", s));
+        this.add(new MultiMediaPanel("Series", s));
+        this.add(new MultiMediaPanel("Series", s));
         
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS)); 
     }

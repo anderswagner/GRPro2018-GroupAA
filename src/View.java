@@ -9,11 +9,10 @@ public class View{
     JMenuBar menubar;
     public View(){
         frame = new JFrame();
-        scrollPane =  new JScrollPane(new GUI());
-        scrollPane.getVerticalScrollBar().setUnitIncrement(30);
+        makeScroll("");
         makeButtons();
 
-        frame.add(scrollPane);
+        
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setMinimumSize(new Dimension(600,400));
         frame.setLocationRelativeTo(null);
@@ -23,10 +22,13 @@ public class View{
         frame.setVisible(true);
 
     }
-
+    public void makeScroll(String s){
+        scrollPane =  new JScrollPane(new GUI(s));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(30);
+        frame.add(scrollPane);
+    }
     public void makeButtons(){
         menubar =new JMenuBar();
-        menubar.setSize(20,20);
         frame.setJMenuBar(menubar);
         JMenuItem logOut =new JMenuItem("log out");
         logOut.addActionListener(
@@ -45,6 +47,17 @@ public class View{
                     }
                     
                 }
+            });
+            
+        userNameField.addActionListener(
+            (ActionEvent e) -> {
+                String search = userNameField.getText().toLowerCase();
+                frame.getContentPane().removeAll();
+                makeScroll(search);
+                makeButtons();
+                frame.revalidate();
+                frame.repaint();
+                
             });
         menubar.add(Box.createHorizontalGlue());
         menubar.add(userNameField);

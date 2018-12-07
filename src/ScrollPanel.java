@@ -4,13 +4,17 @@ import javax.swing.*;
 public class ScrollPanel extends JPanel
 {
     List<Media> media;
-    public ScrollPanel(List l){
+    public ScrollPanel(String s, List l){
         media = l;
         for(Media m : media){
-            if(m instanceof Movie){
-             this.add(new MediaPanel("" + m.getName()));   
+            if(m.getName().toLowerCase().contains(s)){ 
+                this.add(new MediaPanel("" + m.getName()));
+
+            }
+            else if(m.getCategories().contains(s)){
+                this.add(new MediaPanel("" + m.getName()));
             }
         }
-        
+
     }
 }

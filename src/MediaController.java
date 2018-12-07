@@ -8,7 +8,7 @@ public class MediaController{
 
     private MediaController(){
         mediaData = new MediaData();
-        //view = new View();
+        
     }
 
     public static MediaController getController(){
