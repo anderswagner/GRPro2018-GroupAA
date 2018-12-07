@@ -7,7 +7,7 @@ public class User{
     protected Boolean admin;
 
     public User(String userName, String password, Boolean admin){
-        if(userName!=null){
+        if(!userName.equals("")){
             this.userName=userName;
         }else{
             throw new IllegalArgumentException("Username is null");

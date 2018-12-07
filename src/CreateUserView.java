@@ -6,11 +6,10 @@ public class CreateUserView {
     private JTextField userNameField; //til brugernavn
     private JPasswordField passwordField;
     private JLabel logInLabel; //til at printe på frame
-    private JButton createUserView;//
+    private JButton createButton;//
     private JCheckBox adminCheckBox;
     public CreateUserView(){
         makeFrame();
-        //User user=new User();
     }
     private void makeFrame(){
         
@@ -48,30 +47,33 @@ public class CreateUserView {
         passwordField.setLocation(130,100);
         passwordField.setToolTipText("Enter new password");
         frame.add(passwordField);
-        
-        //Enter knap
-        createUserView=new JButton("Opret Bruger");//JButton tilføjer knap med string
-        createUserView.setSize(createUserView.getSize());
-        createUserView.setLocation(150,150);
-        createUserView.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
-        frame.add(createUserView);
-        
+
         //admin chechbox
         adminCheckBox=new JCheckBox("Er du admin?");//JButton tilføjer knap med string
-        adminCheckBox.setSize(createUserView.getSize());
+        adminCheckBox.setSize(adminCheckBox.getPreferredSize());
         adminCheckBox.setLocation(300,150);
         frame.add(adminCheckBox);
-        
-        
+
+        //Enter knap
+        createButton=new JButton("Opret Bruger");//JButton tilføjer knap med string
+        createButton.setSize(createButton.getPreferredSize());
+        createButton.setLocation(150,150);
+        createButton.addActionListener((ActionEvent e)->{
+            createdUser(
+            MediaController.getController().
+                    CreateUser(userNameField.getText(),
+                            String.valueOf(passwordField.getPassword()),
+                            adminCheckBox.isSelected()
+                    )
+            );
+        }); //Tilføjer event til MediaController på knappe-tryk
+
+        frame.add(createButton);
         frame.setVisible(true);
     }
-    private void enterButtonPressed(ActionEvent e){
-        if(adminCheckBox.isSelected()){}
-        //user.setUserName(userNameField.getText());
-        //user.setPassword(passwordField.getText());
-        new LogInScreen();
-        frame.dispose();
+
+    private void createdUser(boolean success){
+        if (success)
+            System.out.println("Created a user");
     }
-    
-    
 }

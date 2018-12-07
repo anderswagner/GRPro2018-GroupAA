@@ -9,8 +9,8 @@ public class LogInScreen {
     private JButton enterButton;//
     public LogInScreen(){
         makeFrame();
-        
     }
+
     private void makeFrame(){
         // Frame delen
         frame =new JFrame("Log in screen");
@@ -49,16 +49,16 @@ public class LogInScreen {
         
         //Enter knap
         enterButton=new JButton("Enter");//JButton tilføjer knap med string
-        enterButton.setSize(enterButton.preferredSize());
+        enterButton.setSize(enterButton.getPreferredSize());
         enterButton.setLocation(300,150);
         enterButton.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
         
         //Opret brugerknap
         enterButton=new JButton("Opret ny bruger");//JButton tilføjer knap med string
-        enterButton.setSize(enterButton.preferredSize());
+        enterButton.setSize(enterButton.getPreferredSize());
         enterButton.setLocation(120,150);
-        enterButton.addActionListener((ActionEvent e)->{new OpretBruger();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
+        enterButton.addActionListener((ActionEvent e)->{new CreateUserView();frame.dispose();}); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
         frame.setVisible(true);
     }
