@@ -2,13 +2,12 @@ import java.util.List;
 
 public class MediaController{
     private MediaData mediaData;
-    private View view;
 
     private static final MediaController controller = new MediaController();
 
     private MediaController(){
         mediaData = new MediaData();
-        
+
     }
 
     public static MediaController getController(){
@@ -29,14 +28,23 @@ public class MediaController{
         return mediaData.getSeries();
     }
 
-    public View getView(){
-        return view;
+    public void getView(){
+        new View();
     }
 
     public boolean CreateUser(String username, String password, boolean admin){
         try{
             mediaData.CreateNewUser(username, password, admin);
             return true;
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean TryLogin(String username, String password){
+        try{
+            return mediaData.TryLogin(username, password);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;

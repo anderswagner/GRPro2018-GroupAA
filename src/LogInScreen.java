@@ -51,7 +51,12 @@ public class LogInScreen {
         enterButton=new JButton("Enter");//JButton tilføjer knap med string
         enterButton.setSize(enterButton.getPreferredSize());
         enterButton.setLocation(300,150);
-        enterButton.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
+        enterButton.addActionListener((ActionEvent e)->{
+            TryToLogin(
+                    MediaController.getController().TryLogin(userNameField.getText(),
+                            String.valueOf(passwordField.getPassword()))
+            );
+        }); //tilføjer funktion til knappen ved ActionEvent e
         frame.add(enterButton);
         
         //Opret brugerknap
@@ -62,9 +67,14 @@ public class LogInScreen {
         frame.add(enterButton);
         frame.setVisible(true);
     }
-    private void enterButtonPressed(ActionEvent e){
-        new View();
-        frame.dispose();
+
+    private void TryToLogin(boolean success){
+        if (success){
+            MediaController.getController().getView();
+            frame.dispose();
+        }
+        else{
+            //Display en "fejl"
+        }
     }
-    
 }
