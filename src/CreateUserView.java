@@ -74,7 +74,9 @@ public class CreateUserView {
 
     private void createdUser(boolean success){
         if (success) {
-            System.out.println("Created a user");
+            System.out.println("Created a user with username");
+            MediaController.getController().getView();
+            frame.dispose();
         }
     }
 }

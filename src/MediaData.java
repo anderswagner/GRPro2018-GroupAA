@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,16 +74,16 @@ public class MediaData{
     public void CreateNewUser(String username, String password, Boolean admin) throws IllegalArgumentException{
         if (users.containsKey(username))
             throw new IllegalArgumentException("Username already exists " + username);
-            users.put(username, new User(username, password, admin));
-            currentUser = users.get(username);
+        users.put(username, new User(username, password, admin));
+        currentUser = users.get(username);
     }
 
-    public String TryLogin(String username, String password){
+    public boolean TryLogin(String username, String password){
         if (users.containsKey(username)) {
             boolean loggedIn = users.get(username).checkPassword(password);
             if (loggedIn)
                 currentUser = users.get(username);
-            return username;
+            return loggedIn;
         } else
             throw new IllegalArgumentException("Username doesn't exist " + username);
     }
