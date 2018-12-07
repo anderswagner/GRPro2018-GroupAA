@@ -7,6 +7,7 @@ public class MultiMediaPanel extends JPanel
     JScrollPane scrollPane;
     public MultiMediaPanel(String mediaType){
         MediaCategory = new JLabel("" + mediaType);
+        MediaCategory.setBackground(Color.BLACK);
         scrollPane =  new JScrollPane(new ScrollPanel());
         scrollPane.getHorizontalScrollBar().setUnitIncrement(30);
         this.setLayout(new BorderLayout()); 

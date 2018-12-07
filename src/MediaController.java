@@ -13,7 +13,7 @@ public class MediaController{
     }
 
     public List<Media> getMovies(){
-        return mediaData.getMovies();
+        return MediaData.getMovies();
     }
 
     public List<Media> getSeries(){

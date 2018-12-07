@@ -6,11 +6,11 @@ public class MediaPanel extends JPanel
     private Media myMedia;
     private Dimension size;
     private JLabel name;
-    public MediaPanel(){
+    public MediaPanel(String s){
       //myMedia = media;
       //name = new JLabel( myMedia.getName());
       this.setLayout(new FlowLayout()); 
-      name = new JLabel("Pirate");
+      name = new JLabel(s);
       this.setPreferredSize(new Dimension(200, 100));;
       this.add(name);
       this.setBackground(Color.MAGENTA);
