@@ -73,11 +73,11 @@ public class MediaData{
         return SearchedMedia;
     }
 
-    public void CreateNewUser(String username, String password, Boolean admin){
+    public void CreateNewUser(String username, String password, Boolean admin) throws IllegalArgumentException{
         if (users.containsKey(username))
             throw new IllegalArgumentException("Username already exists " + username);
-        users.put(username, new User(username, password, admin));
-        currentUser = users.get(username);
+            users.put(username, new User(username, password, admin));
+            currentUser = users.get(username);
     }
 
     public String TryLogin(String username, String password){
