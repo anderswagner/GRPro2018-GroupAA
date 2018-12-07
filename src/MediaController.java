@@ -12,11 +12,13 @@ public class MediaController{
         return mediaData;
     }
 
-    public List<Media> getMovies(){
-        return MediaData.getMovies();
+
+    public List<Movie> getMovies(){
+        return mediaData.getMovies();
+
     }
 
-    public List<Media> getSeries(){
+    public List<Series> getSeries(){
         return mediaData.getSeries();
     }
 

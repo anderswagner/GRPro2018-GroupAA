@@ -36,13 +36,12 @@ public class MediaData{
     }
 
     public List<Movie> getMovies(){
-        //ArrayList<Media> movieList = (ArrayList<Media>) (List<? extends Media>) movies;
+
         return movies;
     }
 
-    public List<Media> getSeries(){
-        ArrayList<Media> seriesList = (ArrayList<Media>) (List<? extends Media>) series;
-        return seriesList;
+    public List<Series> getSeries(){
+        return series;
     }
 
     public String GetImageString(String mediaName){

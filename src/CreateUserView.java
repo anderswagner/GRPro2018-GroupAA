@@ -1,14 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-public class OpretBruger {
+public class CreateUserView {
     private JFrame frame; //frame
     private JTextField userNameField; //til brugernavn
     private JPasswordField passwordField;
     private JLabel logInLabel; //til at printe på frame
-    private JButton opretBruger;//
+    private JButton createUserView;//
     private JCheckBox adminCheckBox;
-    public OpretBruger(){
+    public CreateUserView(){
         makeFrame();
         //User user=new User();
     }
@@ -50,15 +50,15 @@ public class OpretBruger {
         frame.add(passwordField);
         
         //Enter knap
-        opretBruger=new JButton("Opret Bruger");//JButton tilføjer knap med string
-        opretBruger.setSize(opretBruger.preferredSize());
-        opretBruger.setLocation(150,150);
-        opretBruger.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
-        frame.add(opretBruger);
+        createUserView=new JButton("Opret Bruger");//JButton tilføjer knap med string
+        createUserView.setSize(createUserView.getSize());
+        createUserView.setLocation(150,150);
+        createUserView.addActionListener((ActionEvent e)->{enterButtonPressed(e);}); //tilføjer funktion til knappen ved ActionEvent e
+        frame.add(createUserView);
         
         //admin chechbox
         adminCheckBox=new JCheckBox("Er du admin?");//JButton tilføjer knap med string
-        adminCheckBox.setSize(opretBruger.preferredSize());
+        adminCheckBox.setSize(createUserView.getSize());
         adminCheckBox.setLocation(300,150);
         frame.add(adminCheckBox);
         
