@@ -11,7 +11,7 @@ public class ScrollPanel extends JPanel
                 this.add(new MediaPanel("" + m.getName()));
 
             }
-            else if(m.getCategories().contains(s)){
+            if(m.getCategories().contains(s)){
                 this.add(new MediaPanel("" + m.getName()));
             }
         }

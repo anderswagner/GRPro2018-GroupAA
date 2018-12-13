@@ -24,7 +24,7 @@ public class MultiMediaPanel extends JPanel
                
         
         this.add(MediaCategory,BorderLayout.PAGE_START);
-        this.setPreferredSize(new Dimension(600,400));
+        this.setPreferredSize(new Dimension(600,200));
         
         
         

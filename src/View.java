@@ -52,6 +52,7 @@ public class View{
         userNameField.addActionListener(
             (ActionEvent e) -> {
                 String search = userNameField.getText().toLowerCase();
+                search.trim();
                 frame.getContentPane().removeAll();
                 makeScroll(search);
                 makeButtons();
