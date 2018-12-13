@@ -47,31 +47,6 @@ public class MediaData{
         return allMedia.get(mediaName).getImageFilename();
     }
 
-    public ArrayList<ArrayList<Media>> search(String searchString){
-        ArrayList<ArrayList<Media>>  mediasWithString = new ArrayList<ArrayList<Media>>();
-        mediasWithString.add(searchMediaType(movies, searchString));
-        mediasWithString.add(searchMediaType(series, searchString));
-        return mediasWithString;
-    }
-
-    private <M extends Media> ArrayList<Media> searchMediaType(List<M> toSearchThrough, String searchString){
-        ArrayList<Media> SearchedMedia = new ArrayList<>();
-        for(M specificMedia : toSearchThrough){
-            boolean foundMedia = false;
-            for (String category: specificMedia.getCategories()){
-                if(category.contains(searchString)){
-                    foundMedia = true;
-                }
-            }
-            if(specificMedia.getName().contains(searchString)){
-                foundMedia = true;
-            }
-            if (foundMedia) {
-                SearchedMedia.add(specificMedia);}
-        }
-        return SearchedMedia;
-    }
-
     public void CreateNewUser(String username, String password, Boolean admin) throws IllegalArgumentException{
         if (users.containsKey(username))
             throw new IllegalArgumentException("Username already exists " + username);
