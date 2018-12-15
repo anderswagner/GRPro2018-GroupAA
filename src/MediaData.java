@@ -10,12 +10,13 @@ public class MediaData{
     private Map<String,Media> allMedia;
     private Map<String,User> users;
     private User currentUser;
-
+    private List<Media> personalList;
     private MediaParser mediaParser;
 
     public MediaData(){
         mediaParser = new MediaParser("ExternalData/film.txt", "ExternalData/serier.txt");
         allMedia = new HashMap<String,Media>();
+        personalList = new ArrayList<Media>();
         try{
             movies = mediaParser.GetMovies();
             series = mediaParser.GetSeries();
@@ -33,7 +34,16 @@ public class MediaData{
         }
         users = new HashMap();
     }
-
+    
+    public List<Media> getPersonalList(){
+        return personalList;
+    }
+    public void AddToPersonalList(Media m){
+        personalList.add(m);
+    }
+    public void RemoveFromPersonalList(Media m){
+        personalList.remove(m);
+    }
     public List<Movie> getMovies(){
 
         return movies;

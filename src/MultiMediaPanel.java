@@ -14,7 +14,10 @@ public class MultiMediaPanel extends JPanel
         scrollPane =  new JScrollPane(new ScrollPanel(s, MediaController.getController().getMovies()));
         }
         else if(mediaType.equals("Series")){
-        scrollPane =  new JScrollPane(new ScrollPanel(s, MediaController.getController().getSeries()));    
+        scrollPane =  new JScrollPane(new ScrollPanel(s, MediaController.getController().getSeries()));
+        }
+        else if(mediaType.equals("PersonalList")){
+          scrollPane =  new JScrollPane(new ScrollPanel("", MediaController.getController().getPersonalList()));  
         }
         
         scrollPane.getHorizontalScrollBar().setUnitIncrement(30);

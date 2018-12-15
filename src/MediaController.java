@@ -18,7 +18,7 @@ public class MediaController{
         return mediaData;
     }
 
-
+    
     public List<Movie> getMovies(){
         return mediaData.getMovies();
 
@@ -26,6 +26,15 @@ public class MediaController{
 
     public List<Series> getSeries(){
         return mediaData.getSeries();
+    }
+    public List<Media> getPersonalList(){
+        return mediaData.getPersonalList();
+    }
+    public void AddToPersonalList(Media m){
+        mediaData.AddToPersonalList(m);
+    }
+    public void RemoveFromPersonalList(Media m){
+        mediaData.RemoveFromPersonalList(m);
     }
 
     public void getView(){
