@@ -26,3 +26,4 @@ hs_err_pid*
 *.xml
 out/
 *.iml
+src/doc/
