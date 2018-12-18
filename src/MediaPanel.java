@@ -17,7 +17,7 @@ public class MediaPanel extends JPanel
         name.setHorizontalTextPosition(JLabel.CENTER);
         name.setVerticalTextPosition(JLabel.BOTTOM);
         this.setPreferredSize(new Dimension(200, 280));
-        name.setIcon(new ImageIcon("C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/Billeder/" + s + ".jpg"));
+        name.setIcon(new ImageIcon("ExternalData/Billeder/" + s + ".jpg"));
         this.add(name);
         if((MediaController.getController().getPersonalList()).contains(m)){
             addedToList = new JCheckBox("Added to ersonal list", true);

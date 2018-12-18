@@ -14,7 +14,7 @@ public class MediaData{
     private MediaParser mediaParser;
 
     public MediaData(){
-        mediaParser = new MediaParser("C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/film.txt", "C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/serier.txt");
+        mediaParser = new MediaParser("ExternalData/film.txt", "ExternalData/serier.txt");
         allMedia = new HashMap<String,Media>();
         personalList = new ArrayList<Media>();
         try{
