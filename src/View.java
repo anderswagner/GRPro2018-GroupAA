@@ -65,6 +65,7 @@ public class View{
         frontPage.setMaximumSize(frontPage.getPreferredSize());
         userNameField=new JTextField("Search for your favorite content HERE",30);
         userNameField.setMaximumSize(userNameField.getPreferredSize() );
+        
         userNameField.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
