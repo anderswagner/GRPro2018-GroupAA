@@ -1,5 +1,6 @@
 public class Main{
     public static void main(String[] args){
-        new MediaController();
+        MediaController.getController();
+        new LogInScreen();
     }
 }

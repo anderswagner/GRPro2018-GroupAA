@@ -7,8 +7,11 @@ public class User{
     protected Boolean admin;
 
     public User(String userName, String password, Boolean admin){
-        if(userName==null){this.userName=userName;}else{
-        throw new IllegalArgumentException("Username already taken");}
+        if(!userName.equals("")){
+            this.userName=userName;
+        }else{
+            throw new IllegalArgumentException("Username is null");
+        }
         myMovieList = new ArrayList<Movie>();
         mySeriesList = new ArrayList<Series>();
         this.admin = admin;
