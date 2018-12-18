@@ -10,13 +10,11 @@ public class MediaData{
     private Map<String,Media> allMedia;
     private Map<String,User> users;
     private User currentUser;
-    private List<Media> personalList;
     private MediaParser mediaParser;
 
     public MediaData(){
-        mediaParser = new MediaParser("ExternalData/film.txt", "ExternalData/serier.txt");
+        mediaParser = new MediaParser("C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/film.txt", "C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/serier.txt");
         allMedia = new HashMap<String,Media>();
-        personalList = new ArrayList<Media>();
         try{
             movies = mediaParser.GetMovies();
             series = mediaParser.GetSeries();
@@ -33,17 +31,9 @@ public class MediaData{
             }
         }
         users = new HashMap();
+        CreateNewUser("admin","",true);
     }
-    
-    public List<Media> getPersonalList(){
-        return personalList;
-    }
-    public void AddToPersonalList(Media m){
-        personalList.add(m);
-    }
-    public void RemoveFromPersonalList(Media m){
-        personalList.remove(m);
-    }
+
     public List<Movie> getMovies(){
 
         return movies;
@@ -74,13 +64,20 @@ public class MediaData{
             throw new IllegalArgumentException("Username doesn't exist " + username);
     }
 
-    public void addToUserList(Media media){
+    public void AddToPersonalList(Media media){
         if (currentUser != null)
             currentUser.addToMyList(media);
     }
 
-    public void removeFromUserList(Media media){
+    public void RemoveFromPersonalList(Media media){
         if (currentUser != null)
             currentUser.removeFromMyList(media);
+    }
+
+    public List<Media> getPersonalList(){
+        if (currentUser != null){
+            return currentUser.getList();
+        }
+        return null;
     }
 }

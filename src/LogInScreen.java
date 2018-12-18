@@ -18,11 +18,14 @@ public class LogInScreen {
         // Frame delen
         frame =new JFrame("Log in screen");
         frame.setSize(500,290);//sætter start størrelsen
-        frame.getContentPane().setBackground(Color.magenta);//sætter baggrundsfarven
         frame.setLocation(400,400);//sætter start location af frame
         frame.setLayout(null);//vælger typen af Layout
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//gør at programmet lukker ned hvis der trykkes på default close
-        
+        try {
+            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("ExternalData/logo.png")))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
         // Username delen
         logInLabel = new JLabel("Enter username");//Print string ved siden af box

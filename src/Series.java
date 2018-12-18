@@ -47,7 +47,7 @@ public class Series extends Media {
 
     public int getEpisodesInSeason(int season){
         try{
-            return seasonEpisodes[season];
+            return seasonEpisodes[season-1];
         } catch (IndexOutOfBoundsException e){
             System.out.println(e.getMessage());
             return 0;

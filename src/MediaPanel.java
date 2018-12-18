@@ -17,13 +17,13 @@ public class MediaPanel extends JPanel
         name.setHorizontalTextPosition(JLabel.CENTER);
         name.setVerticalTextPosition(JLabel.BOTTOM);
         this.setPreferredSize(new Dimension(200, 280));
-        name.setIcon(new ImageIcon("ExternalData/Billeder/" + s + ".jpg"));
+        name.setIcon(new ImageIcon("C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/Billeder/" + s + ".jpg"));
         this.add(name);
         if((MediaController.getController().getPersonalList()).contains(m)){
-            addedToList = new JCheckBox("Added to ersonal list", true);
+            addedToList = new JCheckBox("Add to Personal list", true);
         }
         else{
-            addedToList = new JCheckBox("Added to ersonal list");
+            addedToList = new JCheckBox("Add to Personal list");
         }
         addedToList.setSize(addedToList.getPreferredSize());
         addedToList.setLocation(170,210);
@@ -52,16 +52,25 @@ public class MediaPanel extends JPanel
 
                         }
                         else{
-                            frame =  new JFrame();
-                            frame.setUndecorated(true);
-                            frame.add(new JLabel("  Spiller nu filmen: " + s + "  "));
-                            frame.setLocationRelativeTo(null);
-                            frame.pack();
-                            frame.setVisible(true);
+
+                            JOptionPane.showMessageDialog(null, "  Spiller nu filmen: " + s + "  ", "MediaPlayer", JOptionPane.INFORMATION_MESSAGE);
+
                         }
 
                     }
-
+                    else if(e.getButton() == MouseEvent.BUTTON3){
+                        if(m instanceof Movie){
+                            JOptionPane.showMessageDialog(null,  s + "  has a rating of:  " + m.getRating() + "\n" + "And was first released in:  " + m.getYear(), "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else if(m instanceof Series){
+                            Series castedM = (Series) m;
+                            String yearTo = "" +castedM.getYearTo();
+                            if(Integer.parseInt(yearTo) == 0){
+                                yearTo = Calendar.getInstance().get(Calendar.YEAR) + "  (Still running)";
+                            }
+                            JOptionPane.showMessageDialog(null,  s + "  has a rating of:  " + m.getRating() +"\n" + "The show has been running from:  " + m.getYear() + " to:  " + yearTo, "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
                 }
             });
 

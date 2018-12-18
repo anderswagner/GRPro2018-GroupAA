@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 public class User{
-    protected ArrayList<Movie> myMovieList;
-    protected ArrayList<Series> mySeriesList;
+    protected List<Movie> myMovieList;
+    protected List<Series> mySeriesList;
     protected String userName;
     protected String password;
     protected Boolean admin;
@@ -33,6 +34,19 @@ public class User{
         else if (media instanceof Series){
             mySeriesList.remove(media);
         }
+    }
+
+    public List<Media> getList(){
+        List<Media> temporaryList = new ArrayList<Media>();
+        for (Movie m:
+             myMovieList) {
+            temporaryList.add(m);
+        }
+        for (Series s:
+             mySeriesList) {
+            temporaryList.add(s);
+        }
+        return temporaryList;
     }
 
     public String getUserName(){return userName;}

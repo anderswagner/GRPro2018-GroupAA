@@ -22,12 +22,8 @@ public class EpisodePanel
         optionList.addActionListener(
             (ActionEvent e) -> {
                 frame.dispose();
-                frame =  new JFrame();
-                frame.setUndecorated(true);
-                frame.add(new JLabel("  Spiller nu: " + m.getName() + "  Season: " + s + "  Episode: " + optionList.getSelectedItem()));
-                frame.setLocationRelativeTo(null);
-                frame.pack();
-                frame.setVisible(true);
+                JOptionPane.showMessageDialog(null, "  Spiller nu: " + m.getName() + "  Season: " + s + "  Episode: " + optionList.getSelectedItem(), "MediaPlayer", JOptionPane.INFORMATION_MESSAGE);
+
             });
 
         frame.setLayout(new FlowLayout()); 
