@@ -23,7 +23,7 @@ public class CreateUserView {
         frame.setLayout(null);//vælger typen af Layout
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//gør at programmet lukker ned hvis der trykkes på default close
         try {
-            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:/Users/Vikto/Desktop/AA/GRPro2018-GroupAA/ExternalData/logo.png")))));
+            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("ExternalData/logo.png")))));
         } catch (IOException e) {
             e.printStackTrace();
         }
