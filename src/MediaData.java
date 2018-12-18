@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class MediaData{
     private List<Movie> movies;
@@ -48,10 +49,12 @@ public class MediaData{
     }
 
     public void CreateNewUser(String username, String password, Boolean admin) throws IllegalArgumentException{
-        if (users.containsKey(username))
-            throw new IllegalArgumentException("Username already exists " + username);
+        if (users.containsKey(username)){
+            JOptionPane.showMessageDialog(null, "  Username already exist: " + username, "Error", JOptionPane.INFORMATION_MESSAGE);
+            throw new IllegalArgumentException("Username already exists " + username);}
+            else{
         users.put(username, new User(username, password, admin));
-        currentUser = users.get(username);
+        currentUser = users.get(username);}
     }
 
     public boolean TryLogin(String username, String password){
@@ -61,6 +64,7 @@ public class MediaData{
                 currentUser = users.get(username);
             return loggedIn;
         } else
+            JOptionPane.showMessageDialog(null, "  Username doesn't exist: " + username, "Error", JOptionPane.INFORMATION_MESSAGE);
             throw new IllegalArgumentException("Username doesn't exist " + username);
     }
 
