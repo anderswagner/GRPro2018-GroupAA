@@ -20,10 +20,10 @@ public class MediaPanel extends JPanel
         name.setIcon(new ImageIcon("ExternalData/Billeder/" + s + ".jpg"));
         this.add(name);
         if((MediaController.getController().getPersonalList()).contains(m)){
-            addedToList = new JCheckBox("Added to ersonal list", true);
+            addedToList = new JCheckBox("Add to Personal list", true);
         }
         else{
-            addedToList = new JCheckBox("Added to ersonal list");
+            addedToList = new JCheckBox("Add to Personal list");
         }
         addedToList.setSize(addedToList.getPreferredSize());
         addedToList.setLocation(170,210);
