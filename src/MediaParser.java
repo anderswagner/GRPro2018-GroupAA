@@ -104,7 +104,7 @@ public class MediaParser {
                 for (int restStrings = 4; restStrings < info.length; restStrings++) {
 
                     String[] splitNumbers = info[restStrings].split("[,-]");
-                    for (int numbers = 0; numbers < splitNumbers.length; numbers+=2) {
+                    for (int numbers = 1; numbers < splitNumbers.length; numbers+=2) {
                         seasons.add(getParsedInt(splitNumbers[numbers]));
                     }
                 }
